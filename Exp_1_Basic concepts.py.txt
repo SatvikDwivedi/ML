@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# In[20]:
+
+
+df=pd.read_csv("C:/Users/trid8/Downloads/gap.csv")
+
+
+# In[33]:
+
+
+df.groupby('continent')['lifeExp','gdpPercap'].mean()
+
+
+# In[34]:
+
+
+df.groupby('continent')['lifeExp','gdpPercap'].median()
+
+
+# In[49]:
+
+
+for i in df['continent'].unique():
+    data=df.loc[df['continent'] == i, 'lifeExp']    
+    Q1 = np.percentile(data, 25, interpolation = 'midpoint')
+    Q3 = np.percentile(data, 75, interpolation = 'midpoint') 
+    IQR = Q3 - Q1
+    print(i,IQR)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
